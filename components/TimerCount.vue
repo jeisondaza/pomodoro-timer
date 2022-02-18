@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref, computed } from "nuxt3/dist/app/compat/capi";
+import { ref } from "nuxt3/dist/app/compat/capi";
 
-const seconds = ref(59);
-const minutes = ref(39);
+const seconds = ref<number>(59);
+const minutes = ref<number>(39);
 
 const counter = () => {
   if (seconds.value > 0) {
@@ -15,7 +15,8 @@ const counter = () => {
   }
 };
 const secondsDown = setInterval(counter, 1000);
-const formatTime = (time: number) => (time > 9 ? time : `0${time}`);
+const formatTime = (time: number): string =>
+  time > 9 ? time.toString() : `0${time}`;
 </script>
 
 <template>
