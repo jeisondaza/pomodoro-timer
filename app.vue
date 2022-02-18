@@ -1,7 +1,7 @@
 <template>
   <main>
     <Head>
-      <Title>Pomodoro - timer</Title>
+      <Title>Pomodoro timer</Title>
     </Head>
     <NuxtPage />
   </main>
