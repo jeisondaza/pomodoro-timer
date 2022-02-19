@@ -1,24 +1,21 @@
 <script setup lang="ts">
-import { ref } from "nuxt3/dist/app/compat/capi";
+interface Props {
+  minutes: number;
+}
 
-const seconds = ref<number>(59);
-const minutes = ref<number>(39);
+const props = defineProps<Props>();
 
-const counter = () => {
-  if (seconds.value > 0) {
-    seconds.value--;
-  } else if (minutes.value === 0 && seconds.value === 0) {
-    clearInterval(secondsDown);
-  } else {
-    minutes.value--;
-    seconds.value = 59;
-  }
-};
-const secondsDown = setInterval(counter, 1000);
+const { minutes, seconds, start, pause, reset } = useCountDown(props.minutes);
+
 const formatTime = (time: number): string =>
   time > 9 ? time.toString() : `0${time}`;
 </script>
 
 <template>
-  <h2>{{ formatTime(minutes) }} : {{ formatTime(seconds) }}</h2>
+  <article>
+    <h2>{{ formatTime(minutes) }} : {{ formatTime(seconds) }}</h2>
+    <button @click="start">Start</button>
+    <button @click="pause">Pause</button>
+    <button @click="reset">Reset</button>
+  </article>
 </template>

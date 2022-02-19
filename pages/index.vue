@@ -1,10 +1,9 @@
-<script setup>
-import TimerCount from "../components/TimerCount.vue";
-</script>
+<script setup></script>
 <template>
   <div>
     <h1>Hola desde el home</h1>
-    <TimerCount />
+    <TimerCount :minutes="1" />
+    <!-- <TimerCount :minutes="20" /> -->
     <NuxtLink to="settings">Settings</NuxtLink>
   </div>
 </template>
